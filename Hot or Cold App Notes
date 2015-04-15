@@ -1,0 +1,7 @@
+
+Hot or Cold App Notes
+
+
+Generate a random number : 
+	Math.floor((Math.random() * 100) + 1);
+
