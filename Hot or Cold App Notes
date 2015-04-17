@@ -5,3 +5,11 @@ Hot or Cold App Notes
 Generate a random number : 
 	Math.floor((Math.random() * 100) + 1);
 
+Functions:
+Why will guessParamaters not work unless it is locally available?
+
+	$("#guessButton").click(function(g) {
+		g.preventDefault();
+		var userNumber = $("#userGuess").val();
+		var difference = Math.abs((hiddenNumber-userNumber));
+- Explain the "g" in brackets and if this is needed.

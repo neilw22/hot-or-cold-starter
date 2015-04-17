@@ -33,18 +33,24 @@ function newGame(){
 
 }
 
+
+
 	$("#guessButton").click(function(g) {
 		g.preventDefault();
 		var userNumber = $("#userGuess").val();
 		var difference = Math.abs((hiddenNumber-userNumber));
 
-		console.log(userNumber);
-		console.log(guessCount);
+	function guessParamaters(){
+		$("#userGuess").val('');
+		$("#guessList").append("<li />"+userNumber);
+		$("#count").text(guessCount);
+		guessCount++;
+	}
 
 		if (isNaN(userNumber)) {
 			$("#feedback").text("Please enter a valid number!");
 			$("#userGuess").val('');
-		} else if (userNumber >= 101) {
+		} else if (userNumber > 100) {
 			$("#feedback").text("Please enter a number between 1 and 100");
 			$("#userGuess").val('');
 		} else if (userNumber <= 0) {
@@ -53,66 +59,37 @@ function newGame(){
 		} else if (userNumber == hiddenNumber) {
 			$("#feedback").text("The number was "+(hiddenNumber)+" - You Win!");
 			$("#userGuess").val('');
-		} else if (difference <= 5) {
+			$("#count").text(guessCount);
+		} else if (difference <= 2) {
 			$("#feedback").text("Very Hot!!");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 15) {
+			guessParamaters();
+		} else if (difference <= 5) {
 			$("#feedback").text("Hot!!");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 20) {
+			guessParamaters();
+		} else if (difference <= 10) {
 			$("#feedback").text("Very Warm");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 30) {
+			guessParamaters();
+		} else if (difference <= 15) {
 			$("#feedback").text("Warm");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 40) {
+			guessParamaters();
+		} else if (difference <= 20) {
 			$("#feedback").text("Luke Warm");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 50) {
+			guessParamaters();
+		} else if (difference <= 25) {
 			$("#feedback").text("Tepid");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 60) {
+			guessParamaters();
+		} else if (difference <= 45) {
 			$("#feedback").text("Cold");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 70) {
+			guessParamaters();
+		} else if (difference <= 60) {
 			$("#feedback").text("Very Cold");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference <= 75) {
+			guessParamaters();
+		} else if (difference <= 70) {
 			$("#feedback").text("Winter is coming...");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
-		} else if (difference >= 75) {
+			guessParamaters();
+		} else if (difference >= 70) {
 			$("#feedback").text("Just the Coldest...");
-			$("#userGuess").val('');
-			$("#guessList").append("<li />"+userNumber);
-			$("#count").text(guessCount);
-			guessCount++;
+			guessParamaters();
 		}
 	})
 });
