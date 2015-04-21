@@ -109,14 +109,35 @@ function newGame(){
 			else if (isNaN(userNumber)) {
 					$("#feedback").text("Please enter a valid number!");
 					$("#userGuess").val('');
+				}
 			else if (prevDifference > difference) {
-					$("#feedback").text("Hotter");
+				if ((prevDifference-difference)<=5){
+					$("#feedback").text("A little warmer!");
 					guessParamaters();
+					}
+				else if ((prevDifference-difference)<=15){
+					$("#feedback").text("Warmer!");
+					guessParamaters();
+					}
+				else if ((prevDifference-difference)>=15){
+					$("#feedback").text("Much Warmer!");
+					guessParamaters();
+					}
 				}
 			else if (prevDifference < difference) {
+				if ((difference-prevDifference)<=5){
+					$("#feedback").text("A little colder");
+					guessParamaters();
+					}
+				else if ((difference-prevDifference)<=15){
 					$("#feedback").text("Colder");
 					guessParamaters();
-				}	
+					}
+				else if ((difference-prevDifference)>=15){
+					$("#feedback").text("Much Colder");
+					guessParamaters();
+					}
+				}
 			}
 	})
 });
