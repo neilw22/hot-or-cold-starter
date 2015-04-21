@@ -13,3 +13,12 @@ Why will guessParamaters not work unless it is locally available?
 		var userNumber = $("#userGuess").val();
 		var difference = Math.abs((hiddenNumber-userNumber));
 - Explain the "g" in brackets and if this is needed.
+
+Hotter or Colder version
+
+if - guess span == 0 then run absolute values
+
+if - guess span >= 1  then run relative values
+addClass to number?  create new variable on each click?
+must determine if the difference is greater or smaller than the last click
+Must store each difference in a new var and compare to the last one (prevDiff?)
