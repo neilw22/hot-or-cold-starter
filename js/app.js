@@ -54,7 +54,7 @@ function newGame(){
 		prevGuess = ($(" li:last ").text());
 	}
 
-		// if (guessCount==1) {
+		if (guessCount==1) {
 				if (isNaN(userNumber)) {
 					$("#feedback").text("Please enter a valid number!");
 					$("#userGuess").val('');
@@ -99,11 +99,25 @@ function newGame(){
 					$("#feedback").text("Just the Coldest...");
 					guessParamaters();
 				}
-			// }
-		// else {
-			
-			// }
-			
+			}
+		else {
+			if (userNumber == hiddenNumber) {
+					$("#feedback").text("The number was "+(hiddenNumber)+" - You Win!");
+					$("#userGuess").val('');
+					$("#count").text(guessCount);
+					}
+			else if (isNaN(userNumber)) {
+					$("#feedback").text("Please enter a valid number!");
+					$("#userGuess").val('');
+			else if (prevDifference > difference) {
+					$("#feedback").text("Hotter");
+					guessParamaters();
+				}
+			else if (prevDifference < difference) {
+					$("#feedback").text("Colder");
+					guessParamaters();
+				}	
+			}
 	})
 });
 
