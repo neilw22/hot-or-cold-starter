@@ -29,7 +29,9 @@ function newGame(){
 	$("#userGuess").empty();
 	$("#guessList").empty();
 	$("#userGuess").val('');
+	$("#count").text('0');
 	$("#feedback").text("Make Your Guess!");
+	guessCount = 1;
 }
 // On click function
 
@@ -42,7 +44,6 @@ function newGame(){
 
 		//Debug log
 		console.log('user'+userNumber);
-		console.log('prevint'+prevInt);
 		console.log('diff'+difference);
 		console.log('prevdiff'+prevDifference);
 
@@ -110,11 +111,20 @@ function newGame(){
 					$("#feedback").text("Please enter a valid number!");
 					$("#userGuess").val('');
 				}
+			else if (userNumber > 100) {
+					$("#feedback").text("Please enter a number between 1 and 100");
+					$("#userGuess").val('');
+				}
 			else if (prevDifference > difference) {
 				if ((prevDifference-difference)<=5){
+					if (difference <= 3){
+						$("#feedback").text("So Close!!");
+						guessParamaters();
+					} else {
 					$("#feedback").text("A little warmer!");
 					guessParamaters();
 					}
+				}
 				else if ((prevDifference-difference)<=15){
 					$("#feedback").text("Warmer!");
 					guessParamaters();
